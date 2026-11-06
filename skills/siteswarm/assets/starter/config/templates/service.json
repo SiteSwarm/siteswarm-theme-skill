@@ -1,0 +1,11 @@
+{
+  "name": "Service",
+  "scope": "record",
+  "settings": [
+    {"id": "page_h1", "type": "text", "label": "Page headline"},
+    {"id": "additional_content", "type": "richtext", "label": "Introduction"},
+    {"id": "closing_content", "type": "richtext", "label": "FAQ"},
+    {"id": "seo_title", "type": "text", "label": "SEO title"},
+    {"id": "seo_description", "type": "textarea", "label": "SEO description"}
+  ]
+}

@@ -1,0 +1,11 @@
+{% section 'hero' %}
+<section class="wrap content" aria-labelledby="home-services">
+  <h2 id="home-services">Find a place to start</h2>
+  <div class="cards">
+    {% for entry in datasets.services %}
+      {% render 'service-card', entry: entry %}
+    {% else %}
+      <p>Services will appear here when records are available.</p>
+    {% endfor %}
+  </div>
+</section>

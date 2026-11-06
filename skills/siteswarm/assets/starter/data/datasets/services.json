@@ -1,0 +1,23 @@
+{
+  "alias": "services",
+  "mount_path": "/services",
+  "slug_field": "slug",
+  "item_template": "service",
+  "list_template": "collection",
+  "records": [
+    {
+      "slug": "site-survey",
+      "title": "Site survey",
+      "summary": "A walk-through to map the light, soil, water, and existing plants on your site.",
+      "headline": "Get to know your site",
+      "intro": "We record existing plants, sun exposure, slopes, and drainage.",
+      "faq": "You receive a site sketch and a short list of priorities."
+    },
+    {
+      "slug": "planting-plan",
+      "title": "Planting plan",
+      "summary": "A seasonal planting plan that fits the site's conditions and your maintenance budget.",
+      "intro": "We suggest plant groupings, spacing, and a planting order."
+    }
+  ]
+}

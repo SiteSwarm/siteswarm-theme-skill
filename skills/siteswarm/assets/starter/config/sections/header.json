@@ -1,0 +1,6 @@
+{
+  "name": "Header",
+  "settings": [
+    {"id": "services_label", "type": "text", "label": "Services link", "default": "Services"}
+  ]
+}

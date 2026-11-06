@@ -1,0 +1,7 @@
+{
+  "name": "Hero",
+  "settings": [
+    {"id": "heading", "type": "text", "label": "Heading", "default": "Start with the land."},
+    {"id": "summary", "type": "textarea", "label": "Introduction", "default": "A clearer plan for what to keep, what to plant, and where to begin."}
+  ]
+}

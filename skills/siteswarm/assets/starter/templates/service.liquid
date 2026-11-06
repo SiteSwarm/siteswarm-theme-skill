@@ -1,0 +1,18 @@
+{% assign heading = template.settings.page_h1 | strip | default: item.headline | default: item.title %}
+{% assign intro = template.settings.additional_content | richtext %}
+{% assign faq = template.settings.closing_content | richtext %}
+<article class="wrap content prose">
+  <a href="/services">← All services</a>
+  <h1>{{ heading | escape }}</h1>
+  <p class="lede">{{ item.summary | escape }}</p>
+  {% if intro != blank %}
+    <div class="rich-copy">{{ intro }}</div>
+  {% elsif item.intro != blank %}
+    <p class="rich-copy">{{ item.intro | escape }}</p>
+  {% endif %}
+  {% if faq != blank %}
+    <div class="rich-copy">{{ faq }}</div>
+  {% elsif item.faq != blank %}
+    <div class="rich-copy"><h2>Common questions</h2><p>{{ item.faq | escape }}</p></div>
+  {% endif %}
+</article>

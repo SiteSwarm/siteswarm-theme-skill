@@ -1,0 +1,10 @@
+.env
+.env.*
+.siteswarm.yml
+.hostnet.yml
+*.pem
+*.key
+node_modules/
+.DS_Store
+field-notes-demo/
+*.zip

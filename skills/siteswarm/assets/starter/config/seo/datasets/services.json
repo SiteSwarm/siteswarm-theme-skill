@@ -1,0 +1,4 @@
+{
+  "title_template": "{{ service.title | default: 'Services' }} | {{ settings.studio_name }}",
+  "description_template": "{{ service.summary }}"
+}

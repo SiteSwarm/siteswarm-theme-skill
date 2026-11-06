@@ -1,0 +1,11 @@
+<section class="wrap content">
+  <p class="kicker">{{ settings.studio_name | escape }}</p>
+  <h1>Services</h1>
+  <div class="cards">
+    {% for entry in collection %}
+      {% render 'service-card', entry: entry %}
+    {% else %}
+      <p>There are no services to show right now.</p>
+    {% endfor %}
+  </div>
+</section>

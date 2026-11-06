@@ -1,0 +1,28 @@
+{
+  "name": "Field Notes Studio",
+  "description": "A starter for service sites with editable copy and a mounted dataset.",
+  "version": "1.0.0",
+  "category": "business",
+  "datasets": {
+    "services": {
+      "name": "Services",
+      "required": true,
+      "mount": {
+        "mode": "mounted",
+        "path": "/services",
+        "slug_field": "slug",
+        "item_template": "service",
+        "list_template": "collection",
+        "show_collection": true
+      },
+      "fields": [
+        {"key": "slug", "type": "string", "required": true},
+        {"key": "title", "type": "string", "required": true},
+        {"key": "summary", "type": "text", "required": true},
+        {"key": "headline", "type": "string"},
+        {"key": "intro", "type": "text"},
+        {"key": "faq", "type": "text"}
+      ]
+    }
+  }
+}

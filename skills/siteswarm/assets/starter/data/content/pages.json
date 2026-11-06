@@ -1,0 +1,10 @@
+{
+  "records": [
+    {
+      "slug": "about",
+      "title": "About the studio",
+      "content": "<p>Field Notes Studio is a fictional example for learning SiteSwarm theme development.</p>",
+      "page_template": "page"
+    }
+  ]
+}

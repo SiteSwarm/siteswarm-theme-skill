@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Studio",
+    "settings": [
+      {"id": "studio_name", "type": "text", "label": "Studio name", "default": "Field Notes Studio"}
+    ]
+  }
+]

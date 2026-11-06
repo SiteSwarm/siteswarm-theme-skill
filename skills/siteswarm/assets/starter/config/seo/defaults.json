@@ -1,0 +1,4 @@
+{
+  "title_template": "{{ settings.studio_name }}",
+  "description_template": "Landscape surveys and planting plans from Field Notes Studio."
+}
