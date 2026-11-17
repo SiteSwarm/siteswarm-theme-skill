@@ -23,9 +23,13 @@ Start `swarm dev ./my-theme --port 4100`. Use a free port and keep the adjacent 
 | --- | --- |
 | Home and navigation | Main heading, accessible links, expected destinations, responsive navigation |
 | Collection and item routes | Correct records, links, empty states, pagination when present, and a real HTTP 404 for missing items |
+| Dataset query completeness | Follow the [representative-data checks](dataset-queries.md#verify-with-representative-data), including matches after row 200, full counts, array membership, saved views, and bounded related lookups |
+| Independent pagination | Check two lists with distinct page parameters, variable sizes, empty results, clamped pages, retained query values, and navigation snippets |
 | Assets and behavior | CSS, images, fonts, scripts, form behavior, and browser console errors relevant to the theme |
 | Editable values | Reasonable defaults in local preview, then actual saved settings on a staging site |
 | SEO | Correct title and description, and expected canonical, social, and robots metadata in the hosted environment |
 | Layout | Check a desktop viewport and a narrow viewport around 390 px for overflow, legibility, and working controls |
 
 The included starter uses `/`, `/services`, `/services/site-survey`, `/services/planting-plan`, and `/about`. Try `/services/no-such-service` and expect HTTP 404. Change a sample record or a section default and verify the edit after preview reload. Local preview uses sample data and can show site-wide metadata for a static route. Hosted staging is the check for actual datasets, customizer saves, and account settings.
+
+Confirm that the target server and preview runtime support the query and pagination features being tested. Updating the skill or client does not establish support in an older server or Docker image. Record unavailable checks explicitly.
