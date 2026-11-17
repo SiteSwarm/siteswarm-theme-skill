@@ -16,6 +16,8 @@ Use `settings.*` for global values, `section.settings.*` inside sections, and `t
 
 The starter demonstrates a mounted dataset with a collection and detail view. Use a mounted path such as `/services` for nested item URLs, or declare `"mode": "fallthrough"` for root-level record slugs. Set `slug_field`, `item_template`, and collection settings in the manifest. Mirror the mount path and template names in the sample dataset file for compatibility with the public preview image. The hosted site needs a dataset connected under the same alias. Collection routes expose `collection`, `mount`, and `pagination`; item routes expose `item` and the singular alias. Add `{% not_found %}` when a parameterized route matches but its required content is missing.
 
+For filtered lists, counts, related records, saved views, and independent pagination, follow [dataset queries and pagination](dataset-queries.md). Use `collection` for mounted-page rows and `paginate.collection` or an `as` alias inside pagination blocks. Pass `pagination: pagination` explicitly to navigation snippets. Confirm runtime support before relying on query-backed filters.
+
 For platform syntax and features beyond the starter, see the [Liquid reference](https://app.siteswarm.co/docs/theme-development/liquid-reference), [components and settings](https://app.siteswarm.co/docs/theme-development/components-and-settings), [content and routing](https://app.siteswarm.co/docs/theme-development/content-routing-and-datasets), and [assets and SEO](https://app.siteswarm.co/docs/theme-development/assets-media-seo-and-search). Use `swarm docs list` for the references bundled with the installed client.
 
 ## Add record-scoped draft settings

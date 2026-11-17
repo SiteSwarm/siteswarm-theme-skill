@@ -30,4 +30,6 @@ swarm dev ./field-notes-demo --port 4100
 
 Open [the local preview](http://localhost:4100) and try **Services**. The [authoring guide](skills/siteswarm/references/authoring.md) covers conversion and editing, the [validation guide](skills/siteswarm/references/validation.md) lists checks to run, and the [staging guide](skills/siteswarm/references/staging.md) explains how to hand off a tested version.
 
+For complete dataset filtering, counts, saved views, related records, and independent pagination, use the [dataset query guide](skills/siteswarm/references/dataset-queries.md). These features need a compatible hosted server and preview runtime; updating this skill does not upgrade either. The starter includes a reusable pagination snippet.
+
 The [official SiteSwarm theme documentation](https://app.siteswarm.co/docs/theme-development/getting-started) covers additional platform features.

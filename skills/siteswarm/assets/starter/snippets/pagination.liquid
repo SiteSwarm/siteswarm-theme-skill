@@ -1,0 +1,19 @@
+{% if pagination.total_pages > 1 %}
+  <nav aria-label="Pagination">
+    {% if pagination.prev_url %}
+      <a href="{{ pagination.prev_url | escape }}" rel="prev">Previous</a>
+    {% endif %}
+    {% for part in pagination.parts %}
+      {% if part.is_current %}
+        <span aria-current="page">{{ part.title | escape }}</span>
+      {% elsif part.is_link %}
+        <a href="{{ part.url | escape }}">{{ part.title | escape }}</a>
+      {% else %}
+        <span>{{ part.title | escape }}</span>
+      {% endif %}
+    {% endfor %}
+    {% if pagination.next_url %}
+      <a href="{{ pagination.next_url | escape }}" rel="next">Next</a>
+    {% endif %}
+  </nav>
+{% endif %}
