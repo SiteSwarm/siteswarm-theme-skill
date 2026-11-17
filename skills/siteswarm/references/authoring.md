@@ -20,6 +20,35 @@ For filtered lists, counts, related records, saved views, and independent pagina
 
 For platform syntax and features beyond the starter, see the [Liquid reference](https://app.siteswarm.co/docs/theme-development/liquid-reference), [components and settings](https://app.siteswarm.co/docs/theme-development/components-and-settings), [content and routing](https://app.siteswarm.co/docs/theme-development/content-routing-and-datasets), and [assets and SEO](https://app.siteswarm.co/docs/theme-development/assets-media-seo-and-search). Use `swarm docs list` for the references bundled with the installed client.
 
+## Read search and filter values
+
+Use `request.params.q` for search text and `request.params.<name>` for other
+URL query values on hosted sites and local preview. For `/probe?q=stump&foo=bar`,
+the values are `stump` and `bar`. Missing keys are nil; empty values stay empty
+strings. Hosted requests decode URL values and preserve parsed arrays such as
+`?category[]=tree&category[]=garden` and nested values such as
+`?filter[city]=Lahore` (`request.params.filter.city`). Check the expected type.
+
+```liquid
+<form action="/search" method="get">
+  <input name="q" value="{{ request.params.q | escape }}">
+  <button type="submit">Search</button>
+</form>
+```
+
+Migrate `request.query.q` to `request.params.q`, `request.query.category` to
+`request.params.category`, and bare `request.query` search text to
+`request.params.q`. The old scalar shortcut is local-only. `search.query` is
+still available with results on `/search?q=...`; keep existing uses of it.
+
+`request.params` contains query values only, excluding body fields, route/controller
+parameters, headers, and cookies. Escape displayed user input and keep secrets
+out of URLs. Reading a value does not filter records automatically: apply the
+intended supported filter before pagination. Parameterized routes remain an
+alternative for path-based category pages. Verify search, a custom filter, empty
+values, encoding, and pagination on hosted staging as well as local preview.
+See the [public query reference](https://app.siteswarm.co/docs/theme-development/liquid-reference#read-url-query-values).
+
 ## Add record-scoped draft settings
 
 For a dataset item template, set `"scope": "record"` at the top level of its schema in `config/templates/<name>.json`. Give text fields stable IDs and use `richtext` for HTML fields. Read `template.settings.<id>` and fall back to a field on `item` when the draft is blank. Use `seo_title` and `seo_description` for staged metadata. Keep the one page H1 in the template and reserve subheadings for rich-text sections.
