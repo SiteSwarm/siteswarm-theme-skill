@@ -33,3 +33,9 @@ Start `swarm dev ./my-theme --port 4100`. Use a free port and keep the adjacent 
 The included starter uses `/`, `/services`, `/services/site-survey`, `/services/planting-plan`, and `/about`. Try `/services/no-such-service` and expect HTTP 404. Change a sample record or a section default and verify the edit after preview reload. Local preview uses sample data and can show site-wide metadata for a static route. Hosted staging is the check for actual datasets, customizer saves, and account settings.
 
 Confirm that the target server and preview runtime support the query and pagination features being tested. Updating the skill or client does not establish support in an older server or Docker image. Record unavailable checks explicitly.
+
+## Check a lookup-only dataset
+
+Confirm that the hosted server and local preview runtime support `mount.mode: "none"`. On staging, confirm that the site connection uses **Lookup only** for the alias in the manifest.
+
+Use a sample record with a stored slug. In local preview and on staging, check that an existing page can render the record through its dataset alias and that `item_url` is empty. Request `/<slug>` for a slug whose URL has no other owner and verify an HTTP 404. For a connection converted from mounted routing, check its former collection and item URLs as well.

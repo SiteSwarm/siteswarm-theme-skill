@@ -5,7 +5,7 @@
 1. Preview the source before editing. Map each distinct page type to a template. For example, `index.html` becomes `templates/index.liquid` at `/`, and a static `tune-up.html` becomes `templates/tune-up.liquid` at `/tune-up`. Make a list of source assets, anchor links, navigation routes, scripts, and forms. For an archive, unpack into a temporary directory and inspect the contents before copying files. For a URL, use source and assets the user is entitled to reuse.
 2. Copy the starter to a separate theme directory. Move the document shell into `layout/theme.liquid` and place `{{ content_for_layout }}` where route content belongs. Preserve source CSS, class names, asset paths, and script behavior until the conversion matches the source. Store packaged CSS, JavaScript, images, and fonts under `assets/`. Use `asset_url`, `stylesheet_tag`, `script_tag`, and `img_url` where appropriate. Relative CSS URLs should resolve from the stylesheet's location.
 3. Move shared, configurable regions into sections and reusable markup into snippets. Keep visual hierarchy, responsive rules, and meaningful HTML. Declare editable defaults in matching sidecar JSON. Keep one H1 per route.
-4. Model repeatable structured content as a dataset. Declare field names and routing in `siteswarm.json` and supply fictional sample records under `data/datasets/`. Use Pages or Posts for editorial content. Use `item_url` when records carry their route metadata, as search results do. For a theme with a fixed mount path, build links from that path and the encoded slug if the local renderer omits the mount prefix. The starter uses `/services/{{ entry.slug | url_encode }}`. Follow the generated links when testing.
+4. Model repeatable structured content as a dataset. Declare field names and routing in `siteswarm.json` and supply fictional sample records under `data/datasets/`. Use Pages or Posts for editorial content. Use `item_url` for routed records that carry their route metadata. For a theme with a fixed mount path, build links from that path and the encoded slug if the local renderer omits the mount prefix. The starter uses `/services/{{ entry.slug | url_encode }}`. Follow the generated links when testing.
 5. Use `{{ seo.meta_tags }}` once in the layout head. For a route such as `/tune-up`, put its title and description templates in `config/seo/templates/tune-up.json` using `title_template` and `description_template`. If the local preview uses the site-wide title, set `{% assign_global page_title = 'Tune-up' %}` in `templates/tune-up.liquid` and verify metadata again on hosted staging. Check each distinct route, 404, optional assets and empty states, and compare the source with the converted page at desktop and mobile widths. Finish with [validation](validation.md).
 
 ## Edit an existing theme
@@ -19,6 +19,24 @@ The starter demonstrates a mounted dataset with a collection and detail view. Us
 For filtered lists, counts, related records, saved views, and independent pagination, follow [dataset queries and pagination](dataset-queries.md). Use `collection` for mounted-page rows and `paginate.collection` or an `as` alias inside pagination blocks. Pass `pagination: pagination` explicitly to navigation snippets. Confirm runtime support before relying on query-backed filters.
 
 For platform syntax and features beyond the starter, see the [Liquid reference](https://app.siteswarm.co/docs/theme-development/liquid-reference), [components and settings](https://app.siteswarm.co/docs/theme-development/components-and-settings), [content and routing](https://app.siteswarm.co/docs/theme-development/content-routing-and-datasets), and [assets and SEO](https://app.siteswarm.co/docs/theme-development/assets-media-seo-and-search). Use `swarm docs list` for the references bundled with the installed client.
+
+## Use datasets for lookups
+
+Use **Lookup only** for support data displayed on existing pages, such as reviews on a business page. Add `mount.mode` to the dataset entry in `siteswarm.json`.
+
+```json
+{
+  "datasets": {
+    "reviews": {
+      "mount": { "mode": "none" }
+    }
+  }
+}
+```
+
+On the hosted site, set the connection with the matching alias to **Lookup only**. Templates can still read `datasets.reviews`. Keep stored slugs that templates use as lookup keys. SiteSwarm skips automatic item and collection routes and sitemap entries for this connection. The `item_url` filter returns an empty string even when a record has a slug.
+
+Check that the hosted site and local preview runtime both support `mount.mode: "none"` before using it. Then [validate a lookup-only dataset](validation.md#check-a-lookup-only-dataset).
 
 ## Read search and filter values
 
