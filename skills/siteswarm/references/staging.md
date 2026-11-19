@@ -24,4 +24,8 @@ Updating an existing theme requires a confirmed theme ID. A push changes shared 
 
 Review the staged site with its actual settings, records, assets, and URLs. For draft fields, save a temporary value for one record, reload its preview, check a second record and the production URL, then clear the test value. Use the site's publish action only with explicit production authorization.
 
+New sites have search engine indexing off by default. With indexing off, production `robots.txt` disallows crawling and SiteSwarm's Liquid SEO helpers emit `noindex, nofollow`. The dashboard shows an advisory before publishing. When publishing through MCP, check `get_site_seo` first and report any `indexing_disabled` warning to the user. Both MCP publish tools and the REST publish endpoint also return the warning on success.
+
+When the site owner explicitly wants search indexing, save **Allow search engine indexing** under **Configuration → SEO**, or use MCP `update_site_seo` with `seo: {"allow_indexing": true}`. The choice takes effect on production when saved. Staging stays blocked from crawling.
+
 See [validation and versioning](https://app.siteswarm.co/docs/theme-development/validation-and-versioning) and [ZIP uploads](https://app.siteswarm.co/docs/themes/upload-a-zip).
